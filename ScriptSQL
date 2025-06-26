@@ -1,0 +1,32 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS db_sales;
+
+-- Create a new user
+CREATE USER IF NOT EXISTS 'test'@'%' IDENTIFIED BY '123';
+
+-- Grant all privileges to the user
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'%' WITH GRANT OPTION;
+
+-- Reload privilege tables
+FLUSH PRIVILEGES;
+
+-- Use the created database
+USE db_sales;
+
+-- Create the tb_clients table
+CREATE TABLE IF NOT EXISTS tb_clients (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    rg VARCHAR(100), -- Brazilian ID
+    cpf VARCHAR(20), -- Brazilian Tax ID
+    email VARCHAR(200),
+    phone VARCHAR(30),
+    mobile VARCHAR(30),
+    zip_code VARCHAR(100),
+    address VARCHAR(255),
+    number INT,
+    complement VARCHAR(200),
+    neighborhood VARCHAR(100),
+    city VARCHAR(100),
+    state CHAR(2) -- Use CHAR(2) for fixed-length state abbreviations
+);
