@@ -1,0 +1,19 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionFactory {
+
+    // Method to get a database connection
+    public Connection getConnection() {
+        try {
+            // Return a connection to the MySQL database
+            return DriverManager.getConnection(
+                "jdbc:mysql://127.0.0.1:3306/db_sales", "test", "123"
+            );
+        } catch (SQLException e) {
+            // Wrap the SQLException in a RuntimeException and rethrow
+            throw new RuntimeException("Error connecting to the database", e);
+        }
+    }
+}
